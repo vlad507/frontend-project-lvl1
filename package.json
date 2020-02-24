@@ -1,0 +1,24 @@
+{
+  "name": "vlad-frontend-project-lvl1",
+  "version": "1.0.0",
+  "description": "first project on hexlet named 'brain games'",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vlad507/frontend-project-lvl1.git"
+  },
+  "author": "Vlad Malyshev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vlad507/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/vlad507/frontend-project-lvl1#readme",
+  "dependencies": {}
+}
