@@ -3,12 +3,11 @@ name: brainCI
 on: 
   -push
 jobs:
-  
   build:
 
     runs-on: ubuntu-latest
     
     steps:
-      name: Run linter
+      - name: Run linter
         run: |
           make lint
