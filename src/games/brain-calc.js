@@ -4,6 +4,7 @@ import {
 
 export default () => {
   const operands = ['+', '-', '*'];
+  console.log('What is the result of the expression?');
   for (let cnt = 0; cnt < 3; cnt += 1) {
     const firstNumber = getRandomInt(100);
     const secondNumber = getRandomInt(100);
