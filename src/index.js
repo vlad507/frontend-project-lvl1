@@ -24,6 +24,37 @@ export const checkAnswer = (answer, correctAnswer) => {
   return false;
 };
 
+const isDivided = (num1, num2, divider) => {
+  if (num1 % divider === 0 && num2 % divider === 0) {
+    return true;
+  }
+  return false;
+};
+
+export const findMaxDivider = (firstNumber, secondNumber) => {
+  let maxDivider;
+  if (firstNumber === secondNumber) {
+    return firstNumber;
+  }
+  if (firstNumber > secondNumber) {
+    if (isDivided(firstNumber, secondNumber, secondNumber)) {
+      return secondNumber;
+    }
+    maxDivider = Math.round(secondNumber / 2);
+  } else {
+    if (isDivided(firstNumber, secondNumber, firstNumber)) {
+      return firstNumber;
+    }
+    maxDivider = Math.round(firstNumber / 2);
+  }
+  for (maxDivider; maxDivider > 1; maxDivider -= 1) {
+    if (isDivided(firstNumber, secondNumber, maxDivider)) {
+      return maxDivider;
+    }
+  }
+  return maxDivider;
+};
+
 export const showResult = (answer, correctAnswer) => {
   if (checkAnswer(answer, correctAnswer)) {
     console.log('Correct!');
