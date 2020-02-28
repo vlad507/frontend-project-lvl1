@@ -2,32 +2,34 @@ import readlineSync from 'readline-sync';
 
 export const askName = () => readlineSync.question('Your name:');
 
-const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+export const greeting = () => {
+  console.log('Welcome to the brain game!');
+  const name = askName();
+  console.log(`Hello, ${name}!`);
+  return name;
+};
 
-const askQuestion = (number) => readlineSync.question(`Question: ${number}\n`);
+export const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
-const checkEven = (number) => number % 2 === 0;
+export const askQuestion = (number) => readlineSync.question(`Question: ${number}\n`);
 
-const getCorrectAnswer = (number) => (checkEven(number) ? 'yes' : 'no');
+export const checkEven = (number) => number % 2 === 0;
 
-const checkAnswer = (answer, correctAnswer) => {
+export const getCorrectEven = (number) => (checkEven(number) ? 'yes' : 'no');
+
+export const checkAnswer = (answer, correctAnswer) => {
   if (correctAnswer === answer) {
     return true;
   }
   return false;
 };
 
-export const playEven = () => {
-  for (let cnt = 0; cnt < 3; cnt += 1) {
-    const number = getRandomInt(15);
-    const answer = askQuestion(number);
-    const correctAnswer = getCorrectAnswer(number);
-    if (checkAnswer(answer, correctAnswer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      return 1;
-    }
+export const showResult = (answer, correctAnswer) => {
+  if (checkAnswer(answer, correctAnswer)) {
+    console.log('Correct!');
+  } else {
+    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+    return 1;
   }
   return 0;
 };
