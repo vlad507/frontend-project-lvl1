@@ -9,6 +9,10 @@ export const greeting = () => {
   return name;
 };
 
+export const defeatMessage = (name) => console.log(`Let's try again, ${name}!`);
+
+export const winMessage = (name) => console.log(`Congratulations, ${name}!`);
+
 export const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 export const askQuestion = (number) => readlineSync.question(`Question: ${number}\n`);
