@@ -3,8 +3,9 @@ import {
 } from '../index.js';
 
 export default () => {
+  const numberOfRepeat = 3;
   console.log('Find the greatest common divisor of given numbers.');
-  for (let cnt = 0; cnt < 3; cnt += 1) {
+  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
     const firstNumber = getRandomInt(100) + 1;
     const secondNumber = getRandomInt(100) + 1;
     const answer = askQuestion(`${firstNumber} ${secondNumber}`);

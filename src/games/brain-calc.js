@@ -4,8 +4,9 @@ import {
 
 export default () => {
   const operands = ['+', '-', '*'];
+  const numberOfRepeat = 3;
   console.log('What is the result of the expression?');
-  for (let cnt = 0; cnt < 3; cnt += 1) {
+  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
     const firstNumber = getRandomInt(100);
     const secondNumber = getRandomInt(100);
     const mathSign = operands[getRandomInt(2)];
