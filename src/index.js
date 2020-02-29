@@ -55,6 +55,18 @@ export const findMaxDivider = (firstNumber, secondNumber) => {
   return maxDivider;
 };
 
+export const findDivider = (number) => {
+  if (number < 2) {
+    return 'no';
+  }
+  for (let divider = 2; divider < number; divider += 1) {
+    if (number % divider === 0) {
+      return 'no';
+    }
+  }
+  return 'yes';
+};
+
 export const showResult = (answer, correctAnswer) => {
   if (checkAnswer(answer, correctAnswer)) {
     console.log('Correct!');
