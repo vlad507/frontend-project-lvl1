@@ -1,28 +1,26 @@
-import {
-  getRandomInt, askQuestion, showResult,
-} from '../index.js';
+import playGame from '../index.js';
+
+const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 export default () => {
+  const nameOfGame = 'calc';
   const operands = ['+', '-', '*'];
   const numberOfRepeat = 3;
-  console.log('What is the result of the expression?');
+  const question = [];
+  const correctAnswer = [];
   for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
     const firstNumber = getRandomInt(100);
     const secondNumber = getRandomInt(100);
     const mathSign = operands[getRandomInt(2)];
-    const answer = askQuestion(`${firstNumber} ${mathSign} ${secondNumber}`);
-    let correctAnswer;
+    question[cnt] = `${firstNumber} ${mathSign} ${secondNumber}`;
     if (mathSign === '+') {
-      correctAnswer = String(firstNumber + secondNumber);
+      correctAnswer[cnt] = String(firstNumber + secondNumber);
     } else if (mathSign === '-') {
-      correctAnswer = String(firstNumber - secondNumber);
+      correctAnswer[cnt] = String(firstNumber - secondNumber);
     } else {
-      correctAnswer = String(firstNumber * secondNumber);
-    }
-    const isWrongAnswer = showResult(answer, correctAnswer);
-    if (isWrongAnswer) {
-      return 1;
+      correctAnswer[cnt] = String(firstNumber * secondNumber);
     }
   }
+  playGame(nameOfGame, question, correctAnswer, numberOfRepeat);
   return 0;
 };

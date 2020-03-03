@@ -1,18 +1,28 @@
-import {
-  getRandomInt, askQuestion, findDivider, showResult,
-} from '../index.js';
+import playGame from '../index.js';
+
+const findDivider = (number) => {
+  if (number < 2) {
+    return 'no';
+  }
+  for (let divider = 2; divider < number; divider += 1) {
+    if (number % divider === 0) {
+      return 'no';
+    }
+  }
+  return 'yes';
+};
+
+const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 export default () => {
   const numberOfRepeat = 3;
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+  const nameOfGame = 'prime';
+  const correctAnswer = [];
+  const question = [];
   for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
     const number = getRandomInt(200);
-    const correctAnswer = findDivider(number);
-    const answer = askQuestion(`${number}`);
-    const isWrongAnswer = showResult(answer, correctAnswer);
-    if (isWrongAnswer) {
-      return 1;
-    }
+    correctAnswer[cnt] = findDivider(number);
+    question[cnt] = number;
   }
-  return 0;
+  playGame(nameOfGame, question, correctAnswer, numberOfRepeat);
 };

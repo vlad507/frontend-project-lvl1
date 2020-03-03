@@ -1,7 +1,15 @@
 {
   "name": "vlad-frontend-project-lvl1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "first project on hexlet named 'brain games'",
+  "keywords": [
+    "game",
+    "calculator",
+    "even",
+    "prime",
+    "progression",
+    "gcd"
+  ],
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -26,9 +34,11 @@
   },
   "homepage": "https://github.com/vlad507/frontend-project-lvl1#readme",
   "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.1",
-    "readline-sync": "^1.4.10"
+    "eslint-plugin-import": "^2.20.1"
   }
 }
