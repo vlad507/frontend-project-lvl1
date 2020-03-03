@@ -1,8 +1,6 @@
-![](https://github.com/vlad507/frontend-project-lvl1/workflows/brainCI/badge.svg)
+<a href="https://github.com/vlad507/frontend-project-lvl1/actions"><img src="https://github.com/vlad507/frontend-project-lvl1/workflows/brainCI/badge.svg"/></a>
 
 <a href="https://codeclimate.com/github/vlad507/frontend-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/68476ecb0d5e57c7ada0/maintainability" /></a>
-
-<a href="https://codeclimate.com/github/vlad507/frontend-project-lvl1/test_coverage"><img src="https://api.codeclimate.com/v1/badges/68476ecb0d5e57c7ada0/test_coverage" /></a>
 
 <a href="https://asciinema.org/a/55eJ0OwQ683RN9WyblHpz6cuZ"><img src="https://asciinema.org/a/55eJ0OwQ683RN9WyblHpz6cuZ.png"/></a>
 
