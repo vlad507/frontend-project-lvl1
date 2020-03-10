@@ -1,21 +1,20 @@
-import playGame from '../index.js';
+import { playGame, numberOfRepeat } from '../index.js';
 
-const checkEven = (number) => number % 2 === 0;
+import getRandomInt from '../utils.js';
 
-const getCorrectEven = (number) => (checkEven(number) ? 'yes' : 'no');
+const isEven = (number) => number % 2 === 0;
 
-const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+const getCorrectAnswer = (number) => (isEven(number) ? 'yes' : 'no');
 
 export default () => {
-  const nameOfGame = 'even';
-  const numberOfRepeat = 3;
-  const question = [];
-  const correctAnswer = [];
-  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
+  const questions = [];
+  const correctAnswers = [];
+  const rulesOfGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+  for (let count = 0; count < numberOfRepeat; count += 1) {
     const number = getRandomInt(15);
-    question[cnt] = number;
-    correctAnswer[cnt] = getCorrectEven(number);
+    questions[count] = number;
+    correctAnswers[count] = getCorrectAnswer(number);
   }
-  playGame(nameOfGame, question, correctAnswer, numberOfRepeat);
+  playGame(rulesOfGame, questions, correctAnswers);
   return 0;
 };

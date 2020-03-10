@@ -1,4 +1,6 @@
-import playGame from '../index.js';
+import { playGame, numberOfRepeat } from '../index.js';
+
+import getRandomInt from '../utils.js';
 
 const isDivided = (num1, num2, divider) => {
   if (num1 % divider === 0 && num2 % divider === 0) {
@@ -31,19 +33,16 @@ const findMaxDivider = (firstNumber, secondNumber) => {
   return maxDivider;
 };
 
-const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
-
 export default () => {
-  const numberOfRepeat = 3;
-  const nameOfGame = 'gcd';
-  const question = [];
-  const correctAnswer = [];
-  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
+  const questions = [];
+  const correctAnswers = [];
+  const rulesOfGame = 'Find the greatest common divisor of given numbers.';
+  for (let count = 0; count < numberOfRepeat; count += 1) {
     const firstNumber = getRandomInt(100) + 1;
     const secondNumber = getRandomInt(100) + 1;
-    question[cnt] = `${firstNumber} ${secondNumber}`;
-    correctAnswer[cnt] = String(findMaxDivider(firstNumber, secondNumber));
+    questions[count] = `${firstNumber} ${secondNumber}`;
+    correctAnswers[count] = String(findMaxDivider(firstNumber, secondNumber));
   }
-  playGame(nameOfGame, question, correctAnswer, numberOfRepeat);
+  playGame(rulesOfGame, questions, correctAnswers);
   return 0;
 };

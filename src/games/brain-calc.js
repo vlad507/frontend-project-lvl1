@@ -1,26 +1,25 @@
-import playGame from '../index.js';
+import { playGame, numberOfRepeat } from '../index.js';
 
-const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+import getRandomInt from '../utils.js';
 
 export default () => {
-  const nameOfGame = 'calc';
   const operands = ['+', '-', '*'];
-  const numberOfRepeat = 3;
-  const question = [];
-  const correctAnswer = [];
-  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
+  const questions = [];
+  const correctAnswers = [];
+  const rulesOfGame = 'What is the result of the expression?';
+  for (let count = 0; count < numberOfRepeat; count += 1) {
     const firstNumber = getRandomInt(100);
     const secondNumber = getRandomInt(100);
     const mathSign = operands[getRandomInt(2)];
-    question[cnt] = `${firstNumber} ${mathSign} ${secondNumber}`;
+    questions[count] = `${firstNumber} ${mathSign} ${secondNumber}`;
     if (mathSign === '+') {
-      correctAnswer[cnt] = String(firstNumber + secondNumber);
+      correctAnswers[count] = String(firstNumber + secondNumber);
     } else if (mathSign === '-') {
-      correctAnswer[cnt] = String(firstNumber - secondNumber);
+      correctAnswers[count] = String(firstNumber - secondNumber);
     } else {
-      correctAnswer[cnt] = String(firstNumber * secondNumber);
+      correctAnswers[count] = String(firstNumber * secondNumber);
     }
   }
-  playGame(nameOfGame, question, correctAnswer, numberOfRepeat);
+  playGame(rulesOfGame, questions, correctAnswers);
   return 0;
 };

@@ -1,14 +1,13 @@
-import playGame from '../index.js';
+import { playGame, numberOfRepeat } from '../index.js';
 
-const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+import getRandomInt from '../utils.js';
 
 export default () => {
-  const numberOfRepeat = 3;
-  const nameOfGame = 'progression';
   const numberOfItems = 10;
-  const question = [];
-  const correctAnswer = [];
-  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
+  const questions = [];
+  const correctAnswers = [];
+  const rulesOfGame = 'What number is missing in the progression?';
+  for (let count = 0; count < numberOfRepeat; count += 1) {
     const progression = [];
     const firstItem = getRandomInt(100);
     const difference = getRandomInt(20) + 1;
@@ -16,10 +15,10 @@ export default () => {
     for (let num = 0; num < numberOfItems; num += 1) {
       progression[num] = firstItem + num * difference;
     }
-    correctAnswer[cnt] = String(progression[position]);
+    correctAnswers[count] = String(progression[position]);
     progression[position] = '..';
-    question[cnt] = `${progression.join(' ')}`;
+    questions[count] = `${progression.join(' ')}`;
   }
-  playGame(nameOfGame, question, correctAnswer, numberOfRepeat);
+  playGame(rulesOfGame, questions, correctAnswers);
   return 0;
 };
