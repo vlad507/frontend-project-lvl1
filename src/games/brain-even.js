@@ -6,15 +6,16 @@ const isEven = (number) => number % 2 === 0;
 
 const getCorrectAnswer = (number) => (isEven(number) ? 'yes' : 'no');
 
+const rulesOfGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 export default () => {
-  const questions = [];
-  const correctAnswers = [];
-  const rulesOfGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const gameData = [];
   for (let count = 0; count < numberOfRepeat; count += 1) {
-    const number = getRandomInt(15);
-    questions[count] = number;
-    correctAnswers[count] = getCorrectAnswer(number);
+    const round = [];
+    const number = getRandomInt(0, 15);
+    round.push(number);
+    round.push(getCorrectAnswer(number));
+    gameData.push(round);
   }
-  playGame(rulesOfGame, questions, correctAnswers);
-  return 0;
+  playGame(rulesOfGame, gameData);
 };

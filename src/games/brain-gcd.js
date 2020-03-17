@@ -33,16 +33,17 @@ const findMaxDivider = (firstNumber, secondNumber) => {
   return maxDivider;
 };
 
+const rulesOfGame = 'Find the greatest common divisor of given numbers.';
+
 export default () => {
-  const questions = [];
-  const correctAnswers = [];
-  const rulesOfGame = 'Find the greatest common divisor of given numbers.';
+  const gameData = [];
   for (let count = 0; count < numberOfRepeat; count += 1) {
-    const firstNumber = getRandomInt(100) + 1;
-    const secondNumber = getRandomInt(100) + 1;
-    questions[count] = `${firstNumber} ${secondNumber}`;
-    correctAnswers[count] = String(findMaxDivider(firstNumber, secondNumber));
+    const round = [];
+    const firstNumber = getRandomInt(0, 100);
+    const secondNumber = getRandomInt(0, 100);
+    round.push(`${firstNumber} ${secondNumber}`);
+    round.push(String(findMaxDivider(firstNumber, secondNumber)));
+    gameData.push(round);
   }
-  playGame(rulesOfGame, questions, correctAnswers);
-  return 0;
+  playGame(rulesOfGame, gameData);
 };
