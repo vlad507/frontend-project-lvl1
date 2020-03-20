@@ -1,14 +1,13 @@
-import { playGame, numberOfRepeat } from '../index.js';
+import { playGame, numberOfRounds } from '../index.js';
 
 import getRandomInt from '../utils.js';
 
-const rulesOfGame = 'What number is missing in the progression?';
+const task = 'What number is missing in the progression?';
 
 export default () => {
   const numberOfItems = 10;
   const gameData = [];
-  for (let count = 0; count < numberOfRepeat; count += 1) {
-    const round = [];
+  for (let count = 0; count < numberOfRounds; count += 1) {
     const progression = [];
     const firstItem = getRandomInt(0, 100);
     const difference = getRandomInt(1, 20);
@@ -16,11 +15,11 @@ export default () => {
     for (let num = 0; num < numberOfItems; num += 1) {
       progression.push(firstItem + num * difference);
     }
-    const correctAnswer = String(progression[position]);
+    const answer = String(progression[position]);
     progression[position] = '..';
-    round.push(`${progression.join(' ')}`);
-    round.push(correctAnswer);
-    gameData.push(round);
+    const question = (`${progression.join(' ')}`);
+    const roundData = [question, answer];
+    gameData.push(roundData);
   }
-  playGame(rulesOfGame, gameData);
+  playGame(task, gameData);
 };

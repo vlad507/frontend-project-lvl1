@@ -1,32 +1,32 @@
-import { playGame, numberOfRepeat } from '../index.js';
+import { playGame, numberOfRounds } from '../index.js';
 
 import getRandomInt from '../utils.js';
 
-const rulesOfGame = 'What is the result of the expression?';
+const operators = ['+', '-', '*'];
+
+const makeExpression = (firstOperand, secondOperand, operator) => {
+  switch (operator) {
+    case '+':
+      return String(firstOperand + secondOperand);
+    case '-':
+      return String(firstOperand - secondOperand);
+    default:
+      return String(firstOperand * secondOperand);
+  }
+};
+
+const task = 'What is the result of the expression?';
 
 export default () => {
   const gameData = [];
-  const operands = ['+', '-', '*'];
-  for (let count = 0; count < numberOfRepeat; count += 1) {
-    const round = [];
+  for (let count = 0; count < numberOfRounds; count += 1) {
     const firstNumber = getRandomInt(0, 100);
     const secondNumber = getRandomInt(0, 100);
-    const mathSign = operands[getRandomInt(0, 2)];
-    round.push(`${firstNumber} ${mathSign} ${secondNumber}`);
-    switch (mathSign) {
-      case '+':
-        round.push(String(firstNumber + secondNumber));
-        break;
-      case '-':
-        round.push(String(firstNumber - secondNumber));
-        break;
-      case '*':
-        round.push(String(firstNumber * secondNumber));
-        break;
-      default:
-        break;
-    }
-    gameData.push(round);
+    const operator = operators[getRandomInt(0, 2)];
+    const question = `${firstNumber} ${operator} ${secondNumber}`;
+    const answer = makeExpression(firstNumber, secondNumber, operator);
+    const roundData = [question, answer];
+    gameData.push(roundData);
   }
-  playGame(rulesOfGame, gameData);
+  playGame(task, gameData);
 };

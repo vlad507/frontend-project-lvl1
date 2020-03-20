@@ -1,14 +1,14 @@
 import readlineSync from 'readline-sync';
 
-export const numberOfRepeat = 3;
+export const numberOfRounds = 3;
 
-export const playGame = (rulesOfGame, gameData) => {
+export const playGame = (task, gameData) => {
   console.log('Welcome to the brain game!');
   const name = readlineSync.question('Your name:');
   console.log(`Hello, ${name}!`);
-  console.log(rulesOfGame);
-  for (let cnt = 0; cnt < numberOfRepeat; cnt += 1) {
-    const [question, correctAnswer] = gameData[cnt];
+  console.log(task);
+  for (let count = 0; count < numberOfRounds; count += 1) {
+    const [question, correctAnswer] = gameData[count];
     const answer = readlineSync.question(`Question: ${question}\n`);
     if (answer !== correctAnswer) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);

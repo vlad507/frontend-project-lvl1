@@ -1,4 +1,4 @@
-import { playGame, numberOfRepeat } from '../index.js';
+import { playGame, numberOfRounds } from '../index.js';
 
 import getRandomInt from '../utils.js';
 
@@ -16,16 +16,16 @@ const isPrime = (number) => {
 
 const getCorrectAnswer = (number) => (isPrime(number) ? 'yes' : 'no');
 
-const rulesOfGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 export default () => {
   const gameData = [];
-  for (let count = 0; count < numberOfRepeat; count += 1) {
-    const round = [];
+  for (let count = 0; count < numberOfRounds; count += 1) {
     const number = getRandomInt(0, 200);
-    round.push(number);
-    round.push(getCorrectAnswer(number));
-    gameData.push(round);
+    const question = number;
+    const answer = getCorrectAnswer(number);
+    const roundData = [question, answer];
+    gameData.push(roundData);
   }
-  playGame(rulesOfGame, gameData);
+  playGame(task, gameData);
 };
