@@ -2,11 +2,11 @@ import { playGame, numberOfRounds } from '../index.js';
 
 import getRandomInt from '../utils.js';
 
-const findMaxDivider = (firstNumber, secondNumber) => {
+const getGcd = (firstNumber, secondNumber) => {
   if (secondNumber === 0) {
     return firstNumber;
   }
-  return findMaxDivider(secondNumber, firstNumber % secondNumber);
+  return getGcd(secondNumber, firstNumber % secondNumber);
 };
 
 const task = 'Find the greatest common divisor of given numbers.';
@@ -17,7 +17,7 @@ export default () => {
     const firstNumber = getRandomInt(0, 100);
     const secondNumber = getRandomInt(0, 100);
     const question = `${firstNumber} ${secondNumber}`;
-    const answer = String(findMaxDivider(firstNumber, secondNumber));
+    const answer = String(getGcd(firstNumber, secondNumber));
     const roundData = [question, answer];
     gameData.push(roundData);
   }

@@ -11,8 +11,9 @@ const task = 'Answer "yes" if the number is even, otherwise answer "no".';
 export default () => {
   const gameData = [];
   for (let count = 0; count < numberOfRounds; count += 1) {
-    const question = getRandomInt(0, 15);
-    const answer = getCorrectAnswer(question);
+    const number = getRandomInt(0, 15);
+    const question = String(number);
+    const answer = getCorrectAnswer(number);
     const roundData = [question, answer];
     gameData.push(roundData);
   }

@@ -4,20 +4,26 @@ import getRandomInt from '../utils.js';
 
 const task = 'What number is missing in the progression?';
 
+const lengthOfProgression = 10;
+
+const createProgression = (firstItem, difference, length) => {
+  const newProgression = [];
+  for (let num = 0; num < length; num += 1) {
+    newProgression.push(firstItem + num * difference);
+  }
+  return newProgression;
+};
+
 export default () => {
-  const numberOfItems = 10;
   const gameData = [];
   for (let count = 0; count < numberOfRounds; count += 1) {
-    const progression = [];
     const firstItem = getRandomInt(0, 100);
     const difference = getRandomInt(1, 20);
-    const position = getRandomInt(0, numberOfItems);
-    for (let num = 0; num < numberOfItems; num += 1) {
-      progression.push(firstItem + num * difference);
-    }
-    const answer = String(progression[position]);
-    progression[position] = '..';
-    const question = (`${progression.join(' ')}`);
+    const hiddenItemIndex = getRandomInt(0, lengthOfProgression - 1);
+    const progression = createProgression(firstItem, difference, lengthOfProgression);
+    const answer = String(progression[hiddenItemIndex]);
+    progression[hiddenItemIndex] = '..';
+    const question = `${progression.join(' ')}`;
     const roundData = [question, answer];
     gameData.push(roundData);
   }

@@ -4,14 +4,16 @@ import getRandomInt from '../utils.js';
 
 const operators = ['+', '-', '*'];
 
-const makeExpression = (firstOperand, secondOperand, operator) => {
+const calculate = (firstOperand, secondOperand, operator) => {
   switch (operator) {
     case '+':
-      return String(firstOperand + secondOperand);
+      return firstOperand + secondOperand;
     case '-':
-      return String(firstOperand - secondOperand);
+      return firstOperand - secondOperand;
+    case '*':
+      return firstOperand * secondOperand;
     default:
-      return String(firstOperand * secondOperand);
+      throw new Error(`Unknown order state: '${operator}'!`);
   }
 };
 
@@ -22,9 +24,9 @@ export default () => {
   for (let count = 0; count < numberOfRounds; count += 1) {
     const firstNumber = getRandomInt(0, 100);
     const secondNumber = getRandomInt(0, 100);
-    const operator = operators[getRandomInt(0, 2)];
+    const operator = operators[getRandomInt(0, operators.length - 1)];
     const question = `${firstNumber} ${operator} ${secondNumber}`;
-    const answer = makeExpression(firstNumber, secondNumber, operator);
+    const answer = String(calculate(firstNumber, secondNumber, operator));
     const roundData = [question, answer];
     gameData.push(roundData);
   }
