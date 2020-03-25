@@ -7,11 +7,11 @@ const task = 'What number is missing in the progression?';
 const lengthOfProgression = 10;
 
 const createProgression = (firstItem, difference, length) => {
-  const newProgression = [];
+  const progression = [];
   for (let num = 0; num < length; num += 1) {
-    newProgression.push(firstItem + num * difference);
+    progression.push(firstItem + num * difference);
   }
-  return newProgression;
+  return progression;
 };
 
 export default () => {
@@ -23,7 +23,7 @@ export default () => {
     const progression = createProgression(firstItem, difference, lengthOfProgression);
     const answer = String(progression[hiddenItemIndex]);
     progression[hiddenItemIndex] = '..';
-    const question = `${progression.join(' ')}`;
+    const question = progression.join(' ');
     const roundData = [question, answer];
     gameData.push(roundData);
   }
